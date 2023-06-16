@@ -61,8 +61,7 @@ function AdminLogin(props) {
                             setValidError(true);
                         } else if (
                             errorValid.status === 400 &&
-                            errorValid.message ===
-                                'This account has not been registered, please contact the manager to get an account'
+                            errorValid.message === 'This account has not been registered, please contact the manager to get an account'
                         ) {
                             setValidErrorRole(true);
                         }
@@ -92,9 +91,7 @@ function AdminLogin(props) {
     return (
         <section className="admin__page__login">
             <div className="admin__page__login--form-box">
-                {validErrorRole && (
-                    <div className="admin__page__login--invalid-role">This account has not been registered</div>
-                )}
+                {validErrorRole && <div className="admin__page__login--invalid-role">This account has not been registered</div>}
                 <div>
                     <form noValidate onSubmit={fomik.handleSubmit} method="post">
                         <h2 className="admin__page__login--form-title">Login</h2>
@@ -121,6 +118,7 @@ function AdminLogin(props) {
                             touched={fomik.touched.password}
                             error={fomik.errors.password}
                             {...fomik.getFieldProps('password')}
+                            autoComplete="off"
                         />
                         <button type="submit" className="admin__page__login--button mt-3">
                             Log in
